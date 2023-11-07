@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible fade show"
+                 role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+<div class="container mt-5">
+    <h2>My Links</h2>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>URL</th>
+                <th>Clicks</th>
+                <th>Request Bytes</th>
+                <th>Response Bytes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for link in data_links %}
+            <tr>
+                <td>{{ link.name }}</td>
+                <td><a class="btn btn-primary" href="{{ link.url }}" target="_blank" role="button">Link</a></td>
+                <td>{{ link.clicks }}</td>
+                <td>{{ link.request_bytes }}</td>
+                <td>{{ link.response_bytes }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No links found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

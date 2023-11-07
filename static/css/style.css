@@ -1,0 +1,10 @@
+body {
+    margin: 0 15%;
+    color: white;
+    background-color: #000000;
+  }
+   
+.links {
+    text-decoration: none;
+    color: white;
+}
